@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: #0b0c0e;
+    color: #f4f5f7;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes fogDriftSlow {
+  0% {
+    transform: translate3d(-4%, 0, 0) scale(1.04);
+  }
+  50% {
+    transform: translate3d(4%, -1.5%, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-4%, 0, 0) scale(1.04);
+  }
+}
+
+@keyframes fogDriftReverse {
+  0% {
+    transform: translate3d(5%, 1%, 0) scale(1.06);
+  }
+  50% {
+    transform: translate3d(-5%, -1%, 0) scale(1.02);
+  }
+  100% {
+    transform: translate3d(5%, 1%, 0) scale(1.06);
+  }
+}
+
+.animate-fog-slow {
+  animation: fogDriftSlow 28s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-fog-reverse {
+  animation: fogDriftReverse 34s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-fog-slow,
+  .animate-fog-reverse {
+    animation: none !important;
+    transform: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

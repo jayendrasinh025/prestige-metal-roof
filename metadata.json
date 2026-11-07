@@ -1,0 +1,6 @@
+{
+  "name": "Prestige Metal Roof",
+  "description": "Premium architectural metal roofing installation, replacement, and repair for residential and commercial properties.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
